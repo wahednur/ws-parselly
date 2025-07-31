@@ -1,7 +1,16 @@
+import { Types } from "mongoose";
+
 export enum Role {
   ADMIN = "admin",
   SENDER = "sender",
   RECEIVER = "receiver",
+  USER = "user",
+}
+
+export enum IsActive {
+  ACTIVE = "ACTIVE",
+  INACTIVE = "INACTIVE",
+  BLOCKED = "BLOCKED",
 }
 
 export interface IAuthProvider {
@@ -15,9 +24,9 @@ export interface IUser {
   password?: string;
   phone?: string;
   picture?: string;
-  address?: string;
-  isDeleted?: string;
-  isActive?: string;
+  address?: Types.ObjectId;
+  isDeleted?: boolean;
+  isActive?: boolean;
   isVerify?: string;
   role: Role;
   auths: IAuthProvider[];

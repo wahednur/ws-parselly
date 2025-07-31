@@ -8,7 +8,7 @@ export enum Label {
 
 export interface IAddress {
   user: Types.ObjectId;
-  label?: "home" | "office" | "other";
+  label?: Label;
   street: string;
   city: string;
   state?: string;
