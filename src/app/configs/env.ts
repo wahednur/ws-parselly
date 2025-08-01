@@ -10,7 +10,7 @@ const envSchema = z.object({
   JWT_SECRET: z.string(),
   JWT_EXP_IN: z.string(),
   JWT_REFRESH_SECRET: z.string(),
-  JWT_REFRESH_EXP: z.string(),
+  JWT_REFRESH_EXP_IN: z.string(),
   BCRYPT_SALT: z.string(),
   FRONTEND_URL: z.string(),
   GOOGLE_CLIENT_ID: z.string(),
