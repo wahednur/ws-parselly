@@ -8,9 +8,9 @@ export enum Role {
 }
 
 export enum IsActive {
-  ACTIVE = "ACTIVE",
-  INACTIVE = "INACTIVE",
-  BLOCKED = "BLOCKED",
+  ACTIVE = "active",
+  INACTIVE = "inactive",
+  BLOCKED = "blocked",
 }
 
 export interface IAuthProvider {
@@ -26,7 +26,7 @@ export interface IUser {
   picture?: string;
   address?: Types.ObjectId;
   isDeleted?: boolean;
-  isActive?: boolean;
+  isActive?: IsActive;
   isVerify?: string;
   role: Role;
   auths: IAuthProvider[];
