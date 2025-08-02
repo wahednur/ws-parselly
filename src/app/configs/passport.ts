@@ -19,12 +19,12 @@ passport.use(
         if (!existUser) {
           return done("User does not exist");
         }
-        if (!existUser.isVerify) {
+        if (!existUser.isVerified) {
           return done("User not verified, please verify now");
         }
         if (
           existUser &&
-          (existUser.isActive === IsActive.ACTIVE ||
+          (existUser.isActive === IsActive.INACTIVE ||
             existUser.isActive === IsActive.BLOCKED)
         ) {
           return done(`User is ${existUser.isActive}`);
@@ -75,7 +75,7 @@ passport.use(
           return done(null, false, { message: "Email not found" });
         }
         let existUser = await User.findOne({ email });
-        if (existUser && !existUser.isVerify) {
+        if (existUser && !existUser.isVerified) {
           return done(null, false, { message: "User is not verified" });
         }
         if (
@@ -89,7 +89,7 @@ passport.use(
           existUser = await User.create({
             email,
             name: profile.displayName,
-            picture: profile?.photos?.[0].value,
+            photo: profile?.photos?.[0].value,
             role: Role.USER,
             isVerify: true,
             auths: [

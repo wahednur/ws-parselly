@@ -23,7 +23,7 @@ export const checkAuth = (...authRoles: []) => {
       if (!existUser) {
         throw new AppError(StatusCodes.BAD_REQUEST, "User does not exist");
       }
-      if (!existUser.isVerify) {
+      if (!existUser.isVerified) {
         throw new AppError(StatusCodes.BAD_REQUEST, "You are not verified");
       }
       if (
