@@ -5,6 +5,7 @@ import catchAsync from "../../../utils/catchAsync";
 import { setAuthCookie } from "../../../utils/jwt/setCookies";
 import { createUserToken } from "../../../utils/jwt/userToken";
 import sendResponse from "../../../utils/sendResponse";
+import { envVars } from "../../configs/env";
 import AppError from "../../errorHelpers/errorHelpers";
 
 const credentialsLogin = catchAsync(
@@ -36,6 +37,23 @@ const credentialsLogin = catchAsync(
     })(req, res, next);
   }
 );
+
+const googleCallbackController = catchAsync(
+  async (req: Request, res: Response, next: NextFunction) => {
+    let redirectTo = req.query.state ? (req.query.state as string) : "";
+    if (redirectTo.startsWith("/")) {
+      redirectTo = redirectTo.slice(1);
+    }
+    const user = req.user;
+    if (!user) {
+      throw new AppError(httpStatus.NOT_FOUND, "User not found");
+    }
+    const tokenInfo = createUserToken(user);
+    setAuthCookie(res, tokenInfo);
+    res.redirect(`${envVars.FRONTEND_URL}/${redirectTo}`);
+  }
+);
 export const AuthControllers = {
   credentialsLogin,
+  googleCallbackController,
 };
