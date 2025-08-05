@@ -131,6 +131,10 @@ GOOGLE_CLIENT_SECRET=google_client_id_secret
 GOOGLE_CALLBACK_URL=google_callback_url
 ```
 
+### Postmat test json
+
+[Postman Json](https://github.com/wahednur/ws-parselly/blob/main/postman.json)
+
 ## 👨‍💻 Author
 
 **Abdul Wahed Nur**  
