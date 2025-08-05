@@ -5,14 +5,17 @@ dotenv.config();
 
 const envSchema = z.object({
   PORT: z.string().min(2, "PORT is required with minimum digit 2 "),
-  MDB_URI: z.string().url("MDB_URI must be a valid MongoDB URL"),
+  MDB_URI: z.url("MDB_URI must be a valid MongoDB URL"),
   NODE_ENV: z.enum(["development", "production"]),
   JWT_SECRET: z.string(),
   JWT_EXP_IN: z.string(),
   JWT_REFRESH_SECRET: z.string(),
-  JWT_REFRESH_EXP: z.string(),
+  JWT_REFRESH_EXP_IN: z.string(),
   BCRYPT_SALT: z.string(),
   FRONTEND_URL: z.string(),
+  GOOGLE_CLIENT_ID: z.string(),
+  GOOGLE_CLIENT_SECRET: z.string(),
+  GOOGLE_CALLBACK_URL: z.string(),
 });
 const parseEnv = envSchema.safeParse(process.env);
 if (!parseEnv.success) {
