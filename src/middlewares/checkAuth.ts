@@ -7,23 +7,25 @@ import { IsActive } from "../app/modules/users/user.interface";
 import { User } from "../app/modules/users/user.model";
 import { verifyToken } from "../utils/jwt/jwt";
 
-export const checkAuth = (...authRoles: []) => {
-  async (req: Request, res: Response, next: NextFunction) => {
+export const checkAuth = (...authRoles: string[]) => {
+  return async (req: Request, res: Response, next: NextFunction) => {
     try {
       const authHeader = req.headers.authorization;
       if (!authHeader || !authHeader.startsWith("Bearer ")) {
         throw new AppError(StatusCodes.FORBIDDEN, "No authorization token");
       }
+
       const token = authHeader.split(" ")[1];
       const verifiedToken = verifyToken(
         token,
         envVars.JWT_SECRET
       ) as JwtPayload;
+
       const existUser = await User.findOne({ email: verifiedToken.email });
       if (!existUser) {
         throw new AppError(StatusCodes.BAD_REQUEST, "User does not exist");
       }
-      if (!existUser.isVerify) {
+      if (!existUser.isVerified) {
         throw new AppError(StatusCodes.BAD_REQUEST, "You are not verified");
       }
       if (
@@ -38,12 +40,15 @@ export const checkAuth = (...authRoles: []) => {
       if (existUser.isDeleted) {
         throw new AppError(StatusCodes.BAD_REQUEST, "User is deleted");
       }
-      if (!authHeader.includes(verifiedToken.role)) {
+
+      // Role-based access check
+      if (!authRoles.includes(verifiedToken.role)) {
         throw new AppError(
           StatusCodes.FORBIDDEN,
           "You are not permitted to view this route"
         );
       }
+
       req.user = verifiedToken;
       next();
     } catch (error) {

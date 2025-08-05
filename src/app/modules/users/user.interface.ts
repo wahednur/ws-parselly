@@ -24,11 +24,11 @@ export interface IUser {
   email: string;
   password?: string;
   phone?: string;
-  picture?: string;
+  photo?: string;
   address?: Types.ObjectId;
   isDeleted?: boolean;
   isActive?: IsActive;
-  isVerify?: string;
+  isVerified?: boolean;
   role: Role;
   auths: IAuthProvider[];
 }

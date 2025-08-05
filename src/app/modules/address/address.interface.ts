@@ -9,10 +9,10 @@ export enum Label {
 export interface IAddress {
   user: Types.ObjectId;
   label?: Label;
-  street: string;
-  city: string;
+  street?: string;
+  city?: string;
   state?: string;
-  postalCode: string;
+  postalCode?: string;
   country?: string;
-  phone: string;
+  phone?: string;
 }

@@ -1,0 +1,432 @@
+{
+	"info": {
+		"_postman_id": "99dcb99f-1ee7-4ee8-b5f8-0b65b927cc3c",
+		"name": "WS-Parsally",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9721417"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Sadika\",\r\n    \"email\": \"sadika@gmail.com\",\r\n    \"password\": \"@WSn123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://ws-parselly.vercel.app/api/user/register",
+							"protocol": "https",
+							"host": [
+								"ws-parselly",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"api",
+								"user",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \r\n    \"email\": \"wahednur@gmail.com\",\r\n    \"password\": \"@WSn123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Parcel",
+			"item": [
+				{
+					"name": "Create parcel",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODhlMWUzYjI5ODRmNWU1MWM4NmI1ZDciLCJlbWFpbCI6IndhaGVkbnVyQGdtYWlsLmNvbSIsInJvbGUiOiJzZW5kZXIiLCJpYXQiOjE3NTQzMzQ1NDYsImV4cCI6MTc1NjkyNjU0Nn0.JIOWKaWi-AJWJnUjBoGpIA8s44D6Wz_frloJ88mzq6M",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\r\n{\r\n    \"senderInfo\": {\r\n        \"name\":\"Wahed Nur\",\r\n        \"label\": \"office\",\r\n        \"state\": \"Mymensingh\",\r\n        \"city\": \"Sherpur\",\r\n        \"postalCode\": \"12345\",\r\n        \"street\": \"Block A, Road 10\",\r\n        \"country\": \"Bangladesh\",\r\n        \"phone\": \"017xxxxxxxx\"\r\n    },\r\n    \"receiverInfo\": {\r\n        \"userId\": \"6890b1a0b5a0134494d74fa4\",\r\n        \"name\":\"Wahed Nur\",\r\n        \"label\": \"office\",\r\n        \"state\": \"Chittagong\",\r\n        \"city\": \"Pahartoli\",\r\n        \"postalCode\": \"12345\",\r\n        \"street\": \"Block A, Road 10\",\r\n        \"country\": \"Bangladesh\",\r\n        \"phone\": \"017xxxxxxxx\"\r\n    },\r\n    \"type\": \"Box\",\r\n    \"weight\": 2.5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://ws-parselly.vercel.app/api/parcels",
+							"protocol": "https",
+							"host": [
+								"ws-parselly",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"api",
+								"parcels"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cancel parcel",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODhlMWUzYjI5ODRmNWU1MWM4NmI1ZDciLCJlbWFpbCI6IndhaGVkbnVyQGdtYWlsLmNvbSIsInJvbGUiOiJzZW5kZXIiLCJpYXQiOjE3NTQzMzU1NzgsImV4cCI6MTc1NjkyNzU3OH0.2T-pNkdfJFN1capq9bF9RbLV2UoNFHh6b-m3tNOM1oA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"note\": \"Sender cancelled before dispatch\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://ws-parselly.vercel.app/api/parcels/cancel/689107004bd60cf7910ee4a5",
+							"protocol": "https",
+							"host": [
+								"ws-parselly",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"api",
+								"parcels",
+								"cancel",
+								"689107004bd60cf7910ee4a5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Conform delivery",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODkwYjFhMGI1YTAxMzQ0OTRkNzRmYTQiLCJlbWFpbCI6InNhZGlrYUBnbWFpbC5jb20iLCJyb2xlIjoicmVjZWl2ZXIiLCJpYXQiOjE3NTQzMzczNjQsImV4cCI6MTc1NjkyOTM2NH0.qOSl96ptykRQhAEa9Cav7wynFaq9dIm9q-5SnTt9EbI",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"note\": \"Sender cancelled before dispatch\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://ws-parselly.vercel.app/api/parcels/confirm/68911033cc3a55d0a76bd40f",
+							"protocol": "https",
+							"host": [
+								"ws-parselly",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"api",
+								"parcels",
+								"confirm",
+								"68911033cc3a55d0a76bd40f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Parcel status",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODhlMWUzYjI5ODRmNWU1MWM4NmI1ZDciLCJlbWFpbCI6IndhaGVkbnVyQGdtYWlsLmNvbSIsInJvbGUiOiJzZW5kZXIiLCJpYXQiOjE3NTQxNjQ5NzUsImV4cCI6MTc1Njc1Njk3NX0.hg5uZhH4ymP-cPD1HkI60fn2bZiqY4np1lHHDm4NdEw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"note\": \"Sender cancelled before dispatch\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://ws-parselly.vercel.app/api/parcels/68911033cc3a55d0a76bd40f/status-log",
+							"protocol": "https",
+							"host": [
+								"ws-parselly",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"api",
+								"parcels",
+								"68911033cc3a55d0a76bd40f",
+								"status-log"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View parcel by user",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODhlMWUzYjI5ODRmNWU1MWM4NmI1ZDciLCJlbWFpbCI6IndhaGVkbnVyQGdtYWlsLmNvbSIsInJvbGUiOiJzZW5kZXIiLCJpYXQiOjE3NTQxNjQ5NzUsImV4cCI6MTc1Njc1Njk3NX0.hg5uZhH4ymP-cPD1HkI60fn2bZiqY4np1lHHDm4NdEw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "// {\r\n//   \"senderInfo\": {\r\n//     \"userId\": \"64f9c5fbe8a7e0a1b2345678\",\r\n//     \"name\": \"Sender Name\",\r\n//     \"address\": \"64f9c6a7e8a7e0a1b2345679\",\r\n//     \"phone\": \"+8801234567890\"\r\n//   },\r\n//   \"receiverInfo\": {\r\n//     \"userId\": \"64f9c7d1e8a7e0a1b234567a\",\r\n//     \"name\": \"Receiver Name\",\r\n//     \"address\": \"64f9c8e3e8a7e0a1b234567b\",\r\n//     \"phone\": \"+8801987654321\"\r\n//   },\r\n//   \"type\": \"Document\",\r\n//   \"weight\": 1.5,\r\n//   \"deliveryAddress\": \"64f9c9f4e8a7e0a1b234567c\"\r\n// }\r\n{\r\n    \"senderInfo\": {\r\n         \"name\":\"Wahed Nur\",\r\n        \"label\": \"office\",\r\n        \"state\": \"Chittagong\",\r\n        \"city\": \"Pahartoli\",\r\n        \"postalCode\": \"12345\",\r\n        \"street\": \"Block A, Road 10\",\r\n        \"country\": \"Bangladesh\",\r\n        \"phone\": \"017xxxxxxxx\"\r\n    },\r\n    \"receiverInfo\": {\r\n        \"userId\": \"688e1e3b2984f5e51c86b5d7\",\r\n        \"name\":\"Wahed Nur\",\r\n        \"label\": \"office\",\r\n        \"state\": \"Chittagong\",\r\n        \"city\": \"Pahartoli\",\r\n        \"postalCode\": \"12345\",\r\n        \"street\": \"Block A, Road 10\",\r\n        \"country\": \"Bangladesh\",\r\n        \"phone\": \"017xxxxxxxx\"\r\n    },\r\n    \"type\": \"Box\",\r\n    \"weight\": 2.5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://ws-parselly.vercel.app/api/parcels/me",
+							"protocol": "https",
+							"host": [
+								"ws-parselly",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"api",
+								"parcels",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Incoming parcel",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODkwYjFhMGI1YTAxMzQ0OTRkNzRmYTQiLCJlbWFpbCI6InNhZGlrYUBnbWFpbC5jb20iLCJyb2xlIjoicmVjZWl2ZXIiLCJpYXQiOjE3NTQzMzczNjQsImV4cCI6MTc1NjkyOTM2NH0.qOSl96ptykRQhAEa9Cav7wynFaq9dIm9q-5SnTt9EbI",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "// {\r\n//   \"senderInfo\": {\r\n//     \"userId\": \"64f9c5fbe8a7e0a1b2345678\",\r\n//     \"name\": \"Sender Name\",\r\n//     \"address\": \"64f9c6a7e8a7e0a1b2345679\",\r\n//     \"phone\": \"+8801234567890\"\r\n//   },\r\n//   \"receiverInfo\": {\r\n//     \"userId\": \"64f9c7d1e8a7e0a1b234567a\",\r\n//     \"name\": \"Receiver Name\",\r\n//     \"address\": \"64f9c8e3e8a7e0a1b234567b\",\r\n//     \"phone\": \"+8801987654321\"\r\n//   },\r\n//   \"type\": \"Document\",\r\n//   \"weight\": 1.5,\r\n//   \"deliveryAddress\": \"64f9c9f4e8a7e0a1b234567c\"\r\n// }\r\n{\r\n    \"senderInfo\": {\r\n         \"name\":\"Wahed Nur\",\r\n        \"label\": \"office\",\r\n        \"state\": \"Chittagong\",\r\n        \"city\": \"Pahartoli\",\r\n        \"postalCode\": \"12345\",\r\n        \"street\": \"Block A, Road 10\",\r\n        \"country\": \"Bangladesh\",\r\n        \"phone\": \"017xxxxxxxx\"\r\n    },\r\n    \"receiverInfo\": {\r\n        \"userId\": \"688e1e3b2984f5e51c86b5d7\",\r\n        \"name\":\"Wahed Nur\",\r\n        \"label\": \"office\",\r\n        \"state\": \"Chittagong\",\r\n        \"city\": \"Pahartoli\",\r\n        \"postalCode\": \"12345\",\r\n        \"street\": \"Block A, Road 10\",\r\n        \"country\": \"Bangladesh\",\r\n        \"phone\": \"017xxxxxxxx\"\r\n    },\r\n    \"type\": \"Box\",\r\n    \"weight\": 2.5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://ws-parselly.vercel.app/api/parcels/incoming",
+							"protocol": "https",
+							"host": [
+								"ws-parselly",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"api",
+								"parcels",
+								"incoming"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "All Parcel",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODhlMWUzYjI5ODRmNWU1MWM4NmI1ZDciLCJlbWFpbCI6IndhaGVkbnVyQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1NDM0NDc1NywiZXhwIjoxNzU2OTM2NzU3fQ.TbcLoYxKuZY1Q_Rn7nDmCkEACG1Nki2xxNJq7Gcl6Uw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"note\": \"Sender cancelled before dispatch\"\r\n}"
+						},
+						"url": {
+							"raw": "https://ws-parselly.vercel.app/api/admin/parcels",
+							"protocol": "https",
+							"host": [
+								"ws-parselly",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"api",
+								"admin",
+								"parcels"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateParcelStatusByAdmin",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODhlMWUzYjI5ODRmNWU1MWM4NmI1ZDciLCJlbWFpbCI6IndhaGVkbnVyQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1NDM0NDc1NywiZXhwIjoxNzU2OTM2NzU3fQ.TbcLoYxKuZY1Q_Rn7nDmCkEACG1Nki2xxNJq7Gcl6Uw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"status\": \"Approved\",\r\n  \"note\": \"Parcel Approved from warehouse\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://ws-parselly.vercel.app/api/admin/parcels/status/689106294bd60cf7910ee495",
+							"protocol": "https",
+							"host": [
+								"ws-parselly",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"api",
+								"admin",
+								"parcels",
+								"status",
+								"689106294bd60cf7910ee495"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateUserStatus Block/unblock",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODhlMWUzYjI5ODRmNWU1MWM4NmI1ZDciLCJlbWFpbCI6IndhaGVkbnVyQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1NDM0NDc1NywiZXhwIjoxNzU2OTM2NzU3fQ.TbcLoYxKuZY1Q_Rn7nDmCkEACG1Nki2xxNJq7Gcl6Uw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://ws-parselly.vercel.app/api/admin/users/block/688e2e5367a2226c58cbd57e",
+							"protocol": "https",
+							"host": [
+								"ws-parselly",
+								"vercel",
+								"app"
+							],
+							"path": [
+								"api",
+								"admin",
+								"users",
+								"block",
+								"688e2e5367a2226c58cbd57e"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
