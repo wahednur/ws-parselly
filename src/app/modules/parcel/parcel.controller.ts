@@ -31,7 +31,59 @@ const getParcels = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
+const cancelParcel = catchAsync(async (req: Request, res: Response) => {
+  const { id } = req.params;
+  const user = req.user as JwtPayload;
+  const result = await ParcelServices.cancelParcel(id, user.userId);
+  sendResponse(res, {
+    statusCode: StatusCodes.OK,
+    success: true,
+    message: "Parcel cancelled successfully",
+    data: result,
+  });
+});
+
+const incomingParcel = catchAsync(async (req: Request, res: Response) => {
+  const user = req.user as JwtPayload;
+  const result = await ParcelServices.incomingParcel(user.userId);
+
+  sendResponse(res, {
+    statusCode: StatusCodes.OK,
+    success: true,
+    message: "Parcel retrieved successfully",
+    data: result,
+  });
+});
+
+const parcelConfirm = catchAsync(async (req: Request, res: Response) => {
+  const { id } = req.params;
+  const user = req.user as JwtPayload;
+  const result = await ParcelServices.confirmDelivery(id, user.userId);
+
+  sendResponse(res, {
+    statusCode: StatusCodes.OK,
+    success: true,
+    message: "Parcel confirmed successfully",
+    data: result,
+  });
+});
+
+const getParcelStatusLog = catchAsync(async (req: Request, res: Response) => {
+  const { id } = req.params;
+  const user = req.user as JwtPayload;
+  const result = await ParcelServices.getParcelStatusLog(id, user.userId);
+  sendResponse(res, {
+    statusCode: StatusCodes.OK,
+    success: true,
+    message: "Parcel status log fetched successfully",
+    data: result,
+  });
+});
 export const ParcelControllers = {
   createParcel,
   getParcels,
+  cancelParcel,
+  incomingParcel,
+  parcelConfirm,
+  getParcelStatusLog,
 };

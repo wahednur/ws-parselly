@@ -18,7 +18,11 @@ const userSchema = new Schema<IUser>(
     },
     phone: { type: String },
     photo: { type: String },
-    isActive: { type: String, enum: IsActive.ACTIVE, default: IsActive.ACTIVE },
+    isActive: {
+      type: String,
+      enum: Object.values(IsActive),
+      default: IsActive.ACTIVE,
+    },
     isDeleted: { type: Boolean, default: false },
     isVerified: { type: Boolean, default: false },
     auths: [authProvideSchema],

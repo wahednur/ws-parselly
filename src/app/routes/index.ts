@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { AdminRoutes } from "../modules/admin/admin.route";
 import { AuthRoutes } from "../modules/auth/auth.route";
 import { ParcelRoutes } from "../modules/parcel/parcel.route";
 import { UserRoutes } from "../modules/users/user.routes";
@@ -17,6 +18,10 @@ const moduleRoutes: IRoute[] = [
   {
     path: "/auth",
     route: AuthRoutes,
+  },
+  {
+    path: "/admin",
+    route: AdminRoutes,
   },
   {
     path: "/parcels",
