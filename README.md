@@ -131,9 +131,11 @@ GOOGLE_CLIENT_SECRET=google_client_id_secret
 GOOGLE_CALLBACK_URL=google_callback_url
 ```
 
-### Postmat test json
+## Postman Collection
 
-[Postman Json](https://github.com/wahednur/ws-parselly/blob/main/postman.json)
+Click below to download the Postman collection:
+
+👉 [Download postman.json](https://raw.githubusercontent.com/wahednur/ws-parselly/main/postman.json)
 
 ## 👨‍💻 Author
 
